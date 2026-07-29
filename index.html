@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Desfrute GMN — gestão de Perfil da Empresa no Google para negócios locais.">
-  <title>Desfrute GMN | Seja encontrado no Google</title>
+  <meta name="description" content="Melhore o alcance orgânico da sua empresa no Google e no Mapa. Otimização profissional de perfil para atrair mais oportunidades de contato na sua região.">
+  <title>Aumente a Visibilidade da sua Empresa no Google | Desfrute GMN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -58,6 +58,28 @@
     footer { padding:28px 0; background:var(--ink); color:#c6d2c7; font-size:.76rem; } footer .wrap { display:flex; justify-content:space-between; gap:20px; align-items:center; } footer a { color:white; text-decoration:none; font-weight:700; }
     @media (max-width:760px) { .wrap { width:min(100% - 32px, 600px); } .nav-link { display:none; } .hero { padding-top:26px; padding-bottom:58px; } .hero-grid, .difference-grid, .about, .pre-grid { grid-template-columns:1fr; gap:35px; } .map-art { min-height:345px; } .steps, .proof-grid, .testimonial-grid { grid-template-columns:1fr; gap:25px; } .services { grid-template-columns:1fr; } section { padding:65px 0; } .difference { padding:67px 0; } h1 { font-size:clamp(2.55rem,12vw,4rem); } .portrait, .portrait img { min-height:310px; } footer .wrap { align-items:flex-start; flex-direction:column; } }
   </style>
+  <style>
+    .brand-copy { font-size:.73rem; font-weight:700; letter-spacing:-.02em; white-space:nowrap; }
+    .services.carousel { position:relative; display:flex; gap:15px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:thin; padding-bottom:12px; }
+    .services.carousel .service { flex:0 0 min(390px, 84vw); scroll-snap-align:start; }
+    .carousel-controls { display:flex; gap:10px; margin-top:18px; }
+    .carousel-controls button { width:40px; height:40px; border:1px solid var(--line); background:white; color:var(--ink); font:700 1.1rem/1 Montserrat,Arial,sans-serif; cursor:pointer; }
+    .footer-info { max-width:640px; line-height:1.55; }
+    .footer-links { display:flex; gap:14px; flex-wrap:wrap; }
+    @media (max-width:760px) { .brand-copy { font-size:.62rem; } .services.carousel { gap:12px; } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"Service","name":"Otimização de Perfil da Empresa no Google","provider":{"@type":"Organization","name":"Desfrute Google Meu Negócio | Janaina Andrade","telephone":"+5512982709760","areaServed":["São José dos Campos","Vale do Paraíba","Brasil"]},"description":"Otimização de perfil para ampliar a visibilidade local no Google e no Google Maps."},
+      {"@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"O serviço garante 1º lugar no Google?","acceptedAnswer":{"@type":"Answer","text":"Nenhuma empresa pode garantir 1º lugar cravado, já que o Google muda os resultados em tempo real dependendo de onde a pessoa está pesquisando. O que a gente faz é deixar seu perfil 100% otimizado para disputar as melhores posições e ter o maior alcance possível."}},
+        {"@type":"Question","name":"O serviço garante vendas?","acceptedAnswer":{"@type":"Answer","text":"O nosso trabalho garante que muito mais pessoas encontrem sua empresa e entrem em contato. A venda em si vai depender do seu atendimento e da sua negociação quando o cliente chamar no WhatsApp ou no telefone."}}
+      ]}
+    ]
+  }
+  </script>
 </head>
 <body>
   <header><div class="wrap"><nav><a class="brand" href="#inicio"><img src="assets/logo-desfrute-gmn.png" alt="Desfrute GMN"></a><a class="nav-link" href="#servicos">Como posso ajudar</a><a class="btn" href="https://wa.me/5512982709760" target="_blank" rel="noopener">Falar no WhatsApp</a></nav></div></header>
@@ -78,6 +100,34 @@
     document.querySelectorAll('a[href^="https://wa.me/5512982709760"]').forEach((link) => {
       link.href = 'https://wa.me/5512982709760?text=' + encodeURIComponent('Olá, vim do Site e quero saber mais sobre o O google meu negócio');
     });
+
+    // Ajustes de conteúdo, transparência e navegação dos serviços.
+    const brand = document.querySelector('.brand');
+    brand.insertAdjacentHTML('beforeend', '<span class="brand-copy">Desfrute GMN - Seja sempre encontrado</span>');
+
+    const heroTitle = document.querySelector('h1');
+    heroTitle.innerHTML = 'Seja <em>encontrado</em> no Google.';
+    document.querySelector('.hero p').textContent = 'Otimizamos sua presença no mapa para aumentar seu alcance orgânico e gerar mais oportunidades de contato no seu WhatsApp.';
+    document.querySelector('.hero-note').innerHTML = '<span class="check">✓</span> Mais visibilidade e alcance. A venda depende do seu atendimento quando o cliente entrar em contato.';
+
+    const serviceIntro = document.querySelector('#servicos .intro p');
+    serviceIntro.textContent = 'Vamos aumentar sua visibilidade, alcance e posicionamento local. Quando mais pessoas encontrarem você, um bom atendimento ajuda a transformar contato em cliente.';
+    const services = document.querySelector('#servicos .services');
+    services.classList.add('carousel');
+    services.insertAdjacentHTML('afterend', '<div class="carousel-controls" aria-label="Navegação dos serviços"><button type="button" class="carousel-prev" aria-label="Serviço anterior">←</button><button type="button" class="carousel-next" aria-label="Próximo serviço">→</button></div>');
+    const scrollServices = (direction) => services.scrollBy({ left: direction * Math.min(405, services.clientWidth * .86), behavior: 'smooth' });
+    document.querySelector('.carousel-prev').addEventListener('click', () => scrollServices(-1));
+    document.querySelector('.carousel-next').addEventListener('click', () => scrollServices(1));
+
+    const faq = document.querySelector('.faq .wrap > div:last-child');
+    faq.innerHTML = `
+      <details><summary>Meu negócio precisa ter loja física?</summary><p>Não. Se você presta serviços, também pode ter presença no Google, de acordo com a forma como atende seus clientes.</p></details>
+      <details><summary>O serviço garante 1º lugar no Google?</summary><p>Nenhuma empresa pode garantir 1º lugar cravado, já que o Google muda os resultados em tempo real dependendo de onde a pessoa está pesquisando. O que a gente faz é deixar seu perfil 100% otimizado para disputar as melhores posições e ter o maior alcance possível.</p></details>
+      <details><summary>O serviço garante vendas?</summary><p>O nosso trabalho garante que muito mais pessoas encontrem sua empresa e entrem em contato. A venda em si vai depender do seu atendimento e da sua negociação quando o cliente chamar no WhatsApp ou no telefone.</p></details>
+      <details><summary>Como faço para começar?</summary><p>É só me chamar no WhatsApp. Vamos conversar sobre o seu negócio e entender o melhor caminho.</p></details>`;
+
+    const footer = document.querySelector('footer .wrap');
+    footer.innerHTML = `<div class="footer-info"><strong>Desfrute Google Meu Negócio | Janaina Andrade</strong><br>Atendimento em São José dos Campos, Vale do Paraíba e todo o Brasil.</div><div><a href="https://wa.me/5512982709760" target="_blank" rel="noopener">(12) 98270-9760</a><div class="footer-links"><a href="politica-de-privacidade.html">Política de Privacidade</a><a href="termos-de-uso.html">Termos de Uso</a></div></div>`;
   </script>
 </body>
 </html>
