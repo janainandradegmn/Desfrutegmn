@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.desfrutegmn.com.br/sitemap.xml
